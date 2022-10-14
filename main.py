@@ -13,8 +13,27 @@ client.remove_command("help")  # removing the default help command for custom on
 
 
 @client.command()
+@commands.is_owner()
+async def load(ctx, extension):
+    client.load_extension(f"cogs.{extension}")
+    await ctx.send(f"Loaded {extension} extension")
+
+
+@client.command()
+@commands.is_owner()
+async def unload(ctx, extension):
+    client.unload_extension(f"cogs.{extension}")
+    await ctx.send(f"Unloaded {extension} extension")
+
+
+for filename in os.listdir("./cogs"):
+    if filename.endswith(".py"):
+        client.load_extension(f"cogs.{filename[:-3]}")
+
+
+@client.command()
 async def ping(ctx):
-    await ctx.send("Pong!")
+    await ctx.send(f"{round(client.latency * 1000)}ms")
 
 
 client.run(TOKEN)
