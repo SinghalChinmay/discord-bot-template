@@ -32,7 +32,7 @@ for folder in os.listdir("./cogs"):
         os.path.isdir("./cogs/" + folder) and folder.endswith("_") is False
     ):  # Searches for folders in cogs folder
         for file in os.listdir("./cogs/" + folder):
-            if file.endswith(".py"):  # Checks for python files
+            if file.endswith(".py"):  # Checks for python files in the folder
                 client.load_extension(
                     f"cogs.{folder}.{file[:-3]}"
                 )  # Loads the extension
