@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 python-dotenv = "*"
 py-cord = "*"
+motor = "*"
+dnspython = "*"
 
 [dev-packages]
 flake8 = "*"
